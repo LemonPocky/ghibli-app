@@ -1,11 +1,42 @@
 .movie-srcs{
     height:150px;
     width: 150px;
+    display: inline-block;
 }
 
 .image-side{
-    border: 1px solid black;
+    
+    margin-left: 23%;
 }
-.movie-info{
+.popup{
     border: 1px solid black;
+    margin: 0 auto;
+    
+}
+
+.popup{
+    display: flex;
+    justify-content: space-between;
+   
+    
+}
+
+li{
+    display: inline;
+     margin: 8px;
+}
+
+img{
+    width: 400px;
+    
+    
+}
+
+.image-side img{
+    height: 400px;
+}
+
+.synopsis{
+   width: 75%;
+    
 }
