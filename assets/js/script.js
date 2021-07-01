@@ -1,5 +1,4 @@
 
-
 const omdbAPIkey = "5af38ba4";
 var test = document.getElementById('root');
 
