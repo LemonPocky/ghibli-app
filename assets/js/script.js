@@ -1,4 +1,5 @@
 
+
 const omdbAPIkey = "5af38ba4";
 var test = document.getElementById('root');
 
@@ -30,9 +31,11 @@ function initApi() {
       data.forEach(movie => {
         var card = document.createElement('div');
         card.setAttribute('class', 'card');
+        card.setAttribute("id", movie.id)
 
         var h1 = document.createElement('h1');
         h1.textContent = movie.title;
+     
 
         var p = document.createElement('p');
         p.textContent = `${movie.description}`;
@@ -45,10 +48,10 @@ function initApi() {
         card.appendChild(p);
         //   card.appendChild(img);  
       });
-          //error handler makes a marquee across the top of the page to notify
+          
     } else {
            var error = document.createElement('marquee');
-           error.textContent = `error fetching data`;
+           error.textContent = `pain`;
            test.appendChild(error);
       }
   } 
@@ -211,4 +214,4 @@ function removeFromArray(itemToRemove, array) {
 }
 
 init();
-// 
+
