@@ -45,10 +45,10 @@ function initApi() {
         card.appendChild(p);
         //   card.appendChild(img);  
       });
-          
+          //error handler makes a marquee across the top of the page to notify
     } else {
            var error = document.createElement('marquee');
-           error.textContent = `pain`;
+           error.textContent = `error fetching data`;
            test.appendChild(error);
       }
   } 
