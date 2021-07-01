@@ -55,6 +55,7 @@ function initApi() {
   } 
   request.send();
 }
+
 initApi();
 
 var container = document.createElement('div');
