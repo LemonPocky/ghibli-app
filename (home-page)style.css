@@ -1,0 +1,93 @@
+element.style {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    max-width: 1200px;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+body {
+    background-image: url(/Users/hayatodouglas/ghibli-app/assets/howls_background.png);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.container2 {
+    position: relative;
+    width: 300px;
+    height: 399.16px;
+    display: inline-block;   
+}
+.image {
+    width: 300px;
+    height: 399.16px;
+}
+.overlay {
+    position: absolute;
+    transition: all .3s ease;
+    opacity: 0;
+    background-color: aliceblue;
+}
+.container2:hover .overlay {
+    opacity: 0.8;
+}
+
+/* MUST COMPLETE THE OTHER OVERLAY FUNCTIONALITY: favorites, number of views, filmography */
+
+.favorites {
+    color: black;
+    font-family: sans-serif;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100%;
+}
+.views {
+    color: black;
+    font-family: sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100%;
+}
+.number {
+    color: black;
+    font-family: sans-serif;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100%;
+}
+.filmography {
+    color: black;
+    font-family: sans-serif;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100%;
+}
+.overlayLeft{
+    height: 100%;
+    width: 0;
+    top: 0;
+    left: 0;
+}
+.container2:hover .overlayLeft {
+    width: 300px;
+
+}
+
+img {
+    width: 300px;
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+    object-position: bottom;
+    padding: 25px;
+}
