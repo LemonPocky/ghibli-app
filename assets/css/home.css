@@ -9,7 +9,7 @@ element.style {
 }
 
 body {
-    background-image: url(/Users/hayatodouglas/ghibli-app/assets/howls_background.png);
+    background-image: url(./../images/howls_background.png);
     background-size: cover;
     background-attachment: fixed;
 }
@@ -36,7 +36,7 @@ body {
 
 /* MUST COMPLETE THE OTHER OVERLAY FUNCTIONALITY: favorites, number of views, filmography */
 
-.favorites {
+.movieName {
     color: black;
     font-family: sans-serif;
     position: absolute;
@@ -45,7 +45,7 @@ body {
     transform: translate(-50%, -50%);
     font-size: 100%;
 }
-.views {
+.favorites {
     color: black;
     font-family: sans-serif;
     position: absolute;
@@ -54,16 +54,7 @@ body {
     transform: translate(-50%, -50%);
     font-size: 100%;
 }
-.number {
-    color: black;
-    font-family: sans-serif;
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 100%;
-}
-.filmography {
+.details {
     color: black;
     font-family: sans-serif;
     position: absolute;
