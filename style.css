@@ -2,6 +2,7 @@
     height:110px;
     width: 110px;
     display: inline-block;
+    
 }
 
 .image-side{
@@ -47,3 +48,23 @@ img{
    width: 75%;
     
 }
+
+#favbutton{
+    
+    border: black solid 1px; 
+    font-size: 18px;
+   
+}
+
+
+#favbutton:hover{
+    background-color: rgba(150, 214, 201, 0.09);
+}
+
+
+
+
+#favbutton:active{
+    background-color: rgba(15, 18, 19, 0.166);
+}
+
