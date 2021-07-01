@@ -52,6 +52,13 @@ function addToFavorites(id) {
     return favorites;
 }
 
+function removeFromFavorites(id) {    
+    const favorites = JSON.stringify(localStorage.getItem("favorites"));
+    removeFromArray(id, favorites);
+    localStorage.setItem("favorites", JSON.parse(favorites));
+    return favorites;
+}
+
 function addToWatched(id) {
     const watched = JSON.stringify(localStorage.getItem('watched'));
     watched.push(id);
@@ -115,6 +122,15 @@ function compareByFavorites(x, y) {
         return 1;
     }
     return 0;
+}
+
+// Helper function that removes an item from an array by value
+// https://stackoverflow.com/a/5767357
+function removeFromArray(itemToRemove, array) {
+    const index = array.indexOf(itemToRemove);
+    if (index > -1) {
+        array.splice(index, 1);
+    }
 }
 
 init();
