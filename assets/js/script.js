@@ -1,8 +1,8 @@
 
 const omdbAPIkey = "5af38ba4";
-var test = document.getElementById('root');
 
-function apicall() {
+// Ghibli API call promise
+const ghibliApiCall = new Promise((resolve, reject) => {
   //placeholder movie + key
   fetch('https://ghibliapi.herokuapp.com/films')
   .then(response => {
@@ -10,88 +10,45 @@ function apicall() {
   })
   //returns movie data as array
   .then(data => {
-    console.log(data);
+    resolve(data);
   });
-}
-
-function initApi() {
-  apicall();
-  buildOMDBApiCall();
-  var request = new XMLHttpRequest();
-
-  request.open('GET', 'https://ghibliapi.herokuapp.com/films', true);
-
-  request.onload = function () {
-
-   // parsing json data
-    var data = JSON.parse(this.response);
-    if (request.status >= 200 && request.status < 400) {
-
-      data.forEach(movie => {
-        var card = document.createElement('div');
-        card.setAttribute('class', 'card');
-
-        var h1 = document.createElement('h1');
-        h1.textContent = movie.title;
-
-        var p = document.createElement('p');
-        p.textContent = `${movie.description}`;
-    
-        //   //todo: fix poster links
-        //   var img = document.createElement('img');
-        //   img.src = movie.poster;
-        container.appendChild(card);
-        card.appendChild(h1);
-        card.appendChild(p);
-        //   card.appendChild(img);  
-      });
-          //error handler makes a marquee across the top of the page to notify
-    } else {
-           var error = document.createElement('marquee');
-           error.textContent = `error fetching data`;
-           test.appendChild(error);
-      }
-  } 
-  request.send();
-}
-
-initApi();
-
-var container = document.createElement('div');
-container.setAttribute('class', 'container');
-test.appendChild(container);
-
-//example function to call OMDB api, TODO: will take specific parameters once they're built and implemented
-function buildOMDBApiCall() {
-    //placeholder movie + key
-    fetch('https://www.omdbapi.com/?t=Majo no takkyūbin&apikey=5af38ba4')
-    .then(response => {
-        return response.json();
-    })
-    //returns movie data as array
-    .then(data => {
-        console.log(data);
-    });
-}
-
+});
   
-const movieListContainer = $("#movie-list-container");
+const movieListContainer = $(".movies-container");
 
 function init() {
-    addExpandViewHandler();
-    addFavoritesHandler();
-    addWatchedHandler();
-    addSortListHandler();
+    ghibliApiCall
+        .then((data) => {
+            addExpandViewHandler(data);
+            // addFavoritesHandler();
+            // addWatchedHandler();
+            // addSortListHandler();
+        });    
 }
 
-function addExpandViewHandler() {
-    // TODO: .movie_details.html is a Placeholder
-    const detailedPage = "movie_details.html";
-    // TODO: .movie-title is a Placeholder
-    movieListContainer.on("click", ".movie-title", function (event) {
+function addExpandViewHandler(data) {
+    const detailedPage = "details.html";
+    movieListContainer.on("click", ".details", function (event) {
         event.preventDefault();
-        const id = $(this).attr("data-id");
-        document.location = detailedPage + "?id=" + id;
+
+        // Count how many siblings are above this element to get this element's index
+        let current = $(this).parent().parent();
+        let index = 0;
+        for (; index < data.length; index++) {
+            console.log(current);
+            current = current.prev('.grid-container');
+            if (!current.length) {
+                break;
+            }
+        }
+
+        const movie = data[index];
+
+        // Redirect to details page
+        document.location = detailedPage 
+            + "?english=" + movie.title
+            + "&japanese=" + movie.original_title_romanised
+            + "&y=" + movie.release_date;
     });
 }
 
