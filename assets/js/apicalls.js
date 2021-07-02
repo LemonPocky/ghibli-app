@@ -3,18 +3,6 @@
 const omdbAPIkey = "5af38ba4";
 var test = document.getElementById('root');
 
-function apicall() {
-  //placeholder movie + key
-  fetch('https://ghibliapi.herokuapp.com/films')
-  .then(response => {
-    return response.json();
-  })
-  //returns movie data as array
-  .then(data => {
-    console.log(data);
-  });
-}
-
 function initApi() {
   apicall();
   buildOMDBApiCall();
@@ -31,7 +19,7 @@ function initApi() {
       data.forEach(movie => {
         var card = document.createElement('div');
         card.setAttribute('class', 'card');
-        card.setAttribute("id", movie.id)
+        card.setAttribute("data-id", movie.id)
 
         var h1 = document.createElement('h1');
         h1.textContent = movie.title;
@@ -64,6 +52,20 @@ initApi();
 var container = document.createElement('div');
 container.setAttribute('class', 'container');
 test.appendChild(container);
+
+
+function apicall() {
+  //placeholder movie + key
+  fetch('https://ghibliapi.herokuapp.com/films')
+  .then(response => {
+    return response.json();
+  })
+  //returns movie data as array
+  .then(data => {
+    console.log(data);
+  });
+}
+
 
 //example function to call OMDB api, TODO: will take specific parameters once they're built and implemented
 function buildOMDBApiCall() {
