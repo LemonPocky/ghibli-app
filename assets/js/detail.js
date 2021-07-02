@@ -46,12 +46,6 @@ function renderPage(movieData) {
         .addClass('is-size-1')
         .text(movieTitle)
     );
-    // Favorite button
-    movieInfo.append(
-        $('<button>')
-        .addClass('favorite-button')
-        .text('Add To Favorites')
-    );
     // Minor details
     const movieSpecs = $('<ul>');
     movieSpecs.append(
