@@ -11,8 +11,10 @@ function fetchAllGhibliMovies() {
   container.setAttribute('class', 'container');
   test.appendChild(container);
 
-    request.open('GET', 'https://ghibliapi.herokuapp.com/films', true);
-    request.onload = function () {
+  request.open('GET', 'https://ghibliapi.herokuapp.com/films', true);
+  request.onload = function () {
+
+
        // parsing json data
      var data = JSON.parse(this.response);
      if (request.status >= 200 && request.status < 400) {
@@ -40,13 +42,13 @@ function fetchAllGhibliMovies() {
          //   card.appendChild(img);  
         });
           
-     }   else {
+    }   else {
           //displays a marquee of text if there's a problem fetching the api data
          var error = document.createElement('marquee');
          error.textContent = `error retrieving data`;
          test.appendChild(error);
         }
-   } 
+  } 
   request.send();
 }
 

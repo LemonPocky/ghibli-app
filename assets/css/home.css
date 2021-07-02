@@ -1,0 +1,78 @@
+body {
+    background-image: url(./../images/howls_background.png);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.grid-container {
+    position: relative;
+    width: 300px;
+    height: auto;
+    display: inline-block; 
+}
+
+.image {
+    width: 300px;
+    height: 399.16px;
+}
+
+.overlay {
+    position: absolute;
+    transition: all .3s ease;
+    opacity: 0;
+    background-color: aliceblue;
+}
+.grid-container:hover .overlay {
+    opacity: 0.8;
+}
+
+.movieName {
+    color: black;
+    font-family: sans-serif;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100%;
+}
+
+.favorites {
+    color: black;
+    font-family: sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100%;
+}
+
+.details {
+    color: black;
+    font-family: sans-serif;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100%;
+}
+
+.overlayLeft {
+    height: 100%;
+    width: 0;
+    top: 0;
+    left: 0;
+}
+
+.grid-container:hover .overlayLeft {
+    width: 300px;
+
+}
+
+img {
+    width: 300px;
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+    object-position: bottom;
+    padding: 25px;
+}
