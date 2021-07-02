@@ -56,6 +56,10 @@ body {
     font-size: 100%;
 }
 
+.favorited-movie {
+    background-color: yellow;
+}
+
 .overlayLeft {
     height: 100%;
     width: 0;
