@@ -9,13 +9,13 @@ A companion app for Studio Ghibli fans. Find information about your favorite Ghi
 ## Features
 - General info and summaries of all 21 of Studio Ghibli's movies
 - Watch movie trailers without leaving the app
-- Save movies to your favorites (coming soon!)
+- Save movies to your favorites
 
 ---
 
 ## Usage
 
-Scroll through the movies on the front page to browse. Hover over a movie to see the title. Click on "Details" to see more information about a movie. 
+Scroll through the movies on the front page to browse. Hover over a movie to see the title. Click on the "+" button to add the movie to your Favorites. Click on "Details" to see more information about a movie.
 
 Click on "Back to Homepage" to return to the list of movies.
 
@@ -30,7 +30,7 @@ Click on "Back to Homepage" to return to the list of movies.
 ---
 ## Future Features
 
-- Add and highlight favorites
+- ~~Add and highlight favorites~~
 - Links to where movies can be streamed
 - Search for movie by name
 - Sort movies by release date
