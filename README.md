@@ -15,6 +15,8 @@ A companion app for Studio Ghibli fans. Find information about your favorite Ghi
 
 ## Usage
 
+![Ghibli App Demo](assets/images/ghibli-demo.gif)
+
 Scroll through the movies on the front page to browse. Hover over a movie to see the title. Click on the "+" button to add the movie to your Favorites. Click on "Details" to see more information about a movie.
 
 Click on "Back to Homepage" to return to the list of movies.
