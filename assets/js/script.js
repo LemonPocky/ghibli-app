@@ -17,10 +17,11 @@ const ghibliApiCall = new Promise((resolve, reject) => {
 const movieListContainer = $(".movies-container");
 
 function init() {
+    highlightFavorites();
     ghibliApiCall
         .then((data) => {
             addExpandViewHandler(data);
-            // addFavoritesHandler();
+            addFavoritesHandler();
             // addWatchedHandler();
             // addSortListHandler();
         });    
@@ -53,11 +54,12 @@ function addExpandViewHandler(data) {
 }
 
 function addFavoritesHandler() {
-    // TODO: .favorite-button is a Placeholder
-    movieListContainer.on("click", ".favorite-button", function (event) {
+    movieListContainer.on("click", ".favorites", function (event) {
         event.preventDefault();
         const id = $(this).parent().attr("data-id");
-        addToFavorites(id);
+        const title = $(this).prev('.movieName').text();
+        toggleFavorites(title);
+        highlightFavorites();
     });
 }
 
@@ -79,25 +81,47 @@ function addSortListHandler() {
     });
 }
 
-function addToFavorites(id) {
-    const favorites = JSON.stringify(localStorage.getItem('favorites'));
-    favorites.push(id);
-    localStorage.setItem('favorites', JSON.parse(favorites));
-    return favorites;
-}
-
-function removeFromFavorites(id) {    
-    const favorites = JSON.stringify(localStorage.getItem("favorites"));
-    removeFromArray(id, favorites);
-    localStorage.setItem("favorites", JSON.parse(favorites));
+// Add to favorites, or if it exists, remove from favorites
+function toggleFavorites(id) {
+    let favorites = JSON.parse(localStorage.getItem('favorites'));
+    if (!favorites) {
+        favorites = [];
+    }
+    const index = favorites.indexOf(id);
+    if (index !== -1) {
+        removeFromArray(id, favorites);
+    } else {
+        favorites.push(id);
+    }
+    localStorage.setItem('favorites', JSON.stringify(favorites));
     return favorites;
 }
 
 function addToWatched(id) {
-    const watched = JSON.stringify(localStorage.getItem('watched'));
+    const watched = JSON.parse(localStorage.getItem('watched'));
     watched.push(id);
-    localStorage.setItem('watched', JSON.parse(watched));
+    localStorage.setItem('watched', JSON.stringify(watched));
     return watched;
+}
+
+function highlightFavorites() {
+    const movies = movieListContainer.children('.grid-container');
+    const favorites = JSON.parse(localStorage.getItem("favorites"));
+    if (!favorites) {
+        return;
+    }
+    movies.each( function (index) {
+        // Get the name of the current movie from .movieName element
+        const currentTitle = $(this).find('.movieName').text();
+        // If the name of the movie is found in favorites
+        if (favorites.indexOf(currentTitle) !== -1) {
+            // Add favorited-movie class to movie card
+            $(this).addClass('favorited-movie');
+        } else {
+            // Otherwise, remove favorited-movie class from movie card
+            $(this).removeClass('favorited-movie');
+        }
+    });
 }
 
 function sortMovieList(sortType) {
